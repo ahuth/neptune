@@ -33,7 +33,7 @@ test('it renders a button and executes clicks', () => {
   expect(example.findAllByType('button')).toHaveLength(1);
 
   // Act
-  example.findByType('button').simulate('click');
+  example.findByType('button').runCallback('onClick');
 
   // Assert
   expect(clickHandler).toHaveBeenCalled();
@@ -68,13 +68,13 @@ Available functions on Neptune instances are
    expect(example.prop('disabled')).toEqual(true);
    ```
 
-- `simulate`
+- `runCallback`
 
-   Simulate triggering an event by name. Looks for a prop following the `on<Name>` pattern. For example, `example.simulate('click')` will look for and execute an `onClick` prop. Takes an optional event to pass to the prop.
+   Finds a prop and executes it if it's a function. Passes additional arguments to the function.
 
    ```js
-   example.simulate('click');
+   example.runCallback('onClick', 'hello!');
 
    // Equivalent to
-   example.prop('onClick')();
+   example.prop('onClick')('hello!');
    ```

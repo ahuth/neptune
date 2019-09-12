@@ -21,11 +21,10 @@ function create(instance: TestRenderer.ReactTestInstance) {
       return instance.props[name];
     },
 
-    simulate(name: string, event?: unknown): void {
+    runCallback(propName: string, ...args: Array<unknown>): void {
       TestRenderer.act(() => {
-        const propName = `on${capitalize(name)}`;
         const callback = instance.props[propName];
-        return typeof callback === 'function' && callback(event);
+        return typeof callback === 'function' && callback(...args);
       });
     },
   });

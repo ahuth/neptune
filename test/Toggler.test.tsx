@@ -15,7 +15,7 @@ test('toggling with default labels', () => {
   const example = getExample();
   const button = example.findByType('button');
   expect(button.prop('children')).toEqual('off');
-  button.simulate('click');
+  button.runCallback('onClick');
   expect(button.prop('children')).toEqual('on');
 });
 
@@ -23,6 +23,6 @@ test('toggling with custom labels', () => {
   const example = getExample({ onLabel: 'yes', offLabel: 'no' });
   const button = example.findByType('button');
   expect(button.prop('children')).toEqual('no');
-  button.simulate('click');
+  button.runCallback('onClick');
   expect(button.prop('children')).toEqual('yes');
 });
