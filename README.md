@@ -76,5 +76,7 @@ Available functions on Neptune instances are
    example.runCallback('onClick', 'hello!');
 
    // Equivalent to
-   example.prop('onClick')('hello!');
+   TestRenderer.act(() => {
+     example.prop('onClick')('hello!');
+   });
    ```
